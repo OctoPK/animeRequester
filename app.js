@@ -1,4 +1,13 @@
-const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc';
+const resultDisplay = document.getElementById('result');
+const effacerBtn = document.getElementById('effacer');
+const parametre = document.getElementById('parametre');
+
+effacerBtn.addEventListener('click', () => {
+	parametre.value = "";
+})
+
+
+/*const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc';
 const options = {
 	method: 'GET',
 	headers: {
@@ -10,7 +19,7 @@ const options = {
 try {
 	const response = await fetch(url, options);
 	const result = await response.text();
-	console.log(result);
+	resultDisplay.textContent = result;
 } catch (error) {
-	console.error(error);
-}
+	resultDisplay.textContent = 'Erreur';
+}*/
