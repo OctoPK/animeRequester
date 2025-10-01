@@ -4,6 +4,9 @@ const parametre = document.getElementById('parametre');
 const rechercheType = document.getElementById('recherche');
 const submitBtn = document.getElementById('submit');
 const titre = document.getElementById('titre');
+const sombre = document.getElementById('sombre');
+
+let cpt = 0;
 
 
 effacerBtn.addEventListener('click', () => {
@@ -14,6 +17,18 @@ submitBtn.addEventListener('click', () => {
 	if (recherche.value == 'nom') afficherNom();
 	if (recherche.value == 'identifiant') afficherID();
 	if (recherche.value == 'classement') afficherClassement();
+});
+
+sombre.addEventListener('click', () => {
+	if (cpt % 2 == 0){
+		document.body.style.backgroundColor = "DarkGrey";
+		document.body.style.color = "White";
+		cpt++;
+	} else {
+		document.body.style.backgroundColor = "White";
+		document.body.style.color = "Black";
+		cpt++;
+	}
 });
 
 function afficherNom(){

@@ -1,3 +1,38 @@
-body{
+/*reset le css*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/*prend toute la page*/
+  html, body {
+    height: 100%;
+  }
+
+/*structure du corps du site*/
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+ header {
+    align-items: center;
     text-align: center;
-}
+    margin-bottom: 5%;
+ }
+
+/*contenue principal du site*/
+  main {
+    flex: 1; /* Prend tout l'espace disponible */
+    margin-left: 10%;
+  }
+
+/*bas du site*/
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }

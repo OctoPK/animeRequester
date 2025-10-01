@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <Choix rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <script defer src="app.js"></script>
     <title>Anime Requester</title>
 </head>
 <body>
     <header>
         <h1>ANIME REQUESTER</h1>
+        <button id="sombre">Mode sombre</button>
     </header>
+    <main>
     <label for="recherche">Choisissez un type de recherche : </label>
     <select name="recherche" id="recherche">
       <option value="nom">Nom</option>
@@ -27,6 +29,8 @@
     <button id="effacer">Effacer</button>
     <p id="titre">Titre de l'anime</p>
     <div id="result"></div>
+    </main>
+    
     <footer>
         <p>Projet de groupe : Biguey Armand, Belmond Tristan et Coombes Ethan</p>
     </footer>
