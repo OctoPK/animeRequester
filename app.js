@@ -1,11 +1,57 @@
 const resultDisplay = document.getElementById('result');
 const effacerBtn = document.getElementById('effacer');
 const parametre = document.getElementById('parametre');
+const rechercheType = document.getElementById('recherche');
+const submitBtn = document.getElementById('submit');
+const titre = document.getElementById('titre');
+
 
 effacerBtn.addEventListener('click', () => {
 	parametre.value = "";
-})
+});
 
+submitBtn.addEventListener('click', () => {
+	if (recherche.value == 'nom') afficherNom();
+	if (recherche.value == 'identifiant') afficherID();
+	if (recherche.value == 'classement') afficherClassement();
+});
+
+function afficherNom(){
+	const nomAnime ="Anime";
+	if (nomAnime.includes(parametre.value)){
+		parametre.value = "";
+		titre.textContent = nomAnime;
+		afficherAnime();
+	} else{
+		titre.textContent ="Pas de resultat";
+	}
+}
+
+function afficherID(){
+	const IDAnime ="0052";
+	if (IDAnime == parametre.value){
+		parametre.value = "";
+		titre.textContent = IDAnime;
+		afficherAnime();
+	} else{
+		titre.textContent ="Pas de resultat";
+	}
+}
+
+function afficherClassement(){
+	const ClassementAnime ="103";
+	if (ClassementAnime == parametre.value){
+		parametre.value = "";
+		titre.textContent = ClassementAnime;
+		afficherAnime();
+	} else{
+		titre.textContent ="Pas de resultat";
+	}
+}
+
+function afficherAnime(){
+
+}
 
 /*const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc';
 const options = {
