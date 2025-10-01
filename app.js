@@ -23,10 +23,16 @@ sombre.addEventListener('click', () => {
 	if (cpt % 2 == 0){
 		document.body.style.backgroundColor = "DarkGrey";
 		document.body.style.color = "White";
+		sombre.textContent = "Mode clair";
+		sombre.style.backgroundColor = "White";
+		sombre.style.color = "Black";
 		cpt++;
 	} else {
 		document.body.style.backgroundColor = "White";
 		document.body.style.color = "Black";
+		sombre.textContent = "Mode sombre";
+		sombre.style.backgroundColor = "Black";
+		sombre.style.color = "White";
 		cpt++;
 	}
 });
