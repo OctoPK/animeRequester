@@ -46,6 +46,7 @@ submitBtn.addEventListener("click", () => {
     if (recherche.value == "classement") afficherClassement();
 });
 
+const forms = document.querySelectorAll(".form-container");
 sombre.addEventListener("click", () => {
     if (cpt % 2 == 0) {
         document.body.style.backgroundColor = "DarkGrey";
@@ -53,13 +54,21 @@ sombre.addEventListener("click", () => {
         sombre.textContent = "Mode clair";
         sombre.style.backgroundColor = "White";
         sombre.style.color = "Black";
-        cpt++;
+		forms.forEach((form) => {
+			form.style.backgroundColor = "lightblue"; // Remplacez "lightblue" par la couleur souhaitée
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); // Ajoute une ombre légère pour un effet de profondeur
+		});
+		cpt++;
     } else {
         document.body.style.backgroundColor = "White";
         document.body.style.color = "Black";
         sombre.textContent = "Mode sombre";
         sombre.style.backgroundColor = "Black";
         sombre.style.color = "White";
+		forms.forEach((form) => {
+			form.style.backgroundColor = "White"; // Remplacez "lightblue" par la couleur souhaitée
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)"); // Ajoute une ombre légère pour un effet de profondeur
+		});
         cpt++;
     }
 });
@@ -69,7 +78,7 @@ function afficherNom() {
     if (nomAnime.includes(parametre.value)) {
         parametre.value = "";
         titre.textContent = nomAnime;
-        afficherAnime();
+        afficheAnime();
     } else {
         titre.textContent = "Pas de resultat";
     }
@@ -80,7 +89,7 @@ function afficherID() {
     if (IDAnime == parametre.value) {
         parametre.value = "";
         titre.textContent = IDAnime;
-        afficherAnime();
+        afficheAnime();
     } else {
         titre.textContent = "Pas de resultat";
     }
@@ -91,7 +100,7 @@ function afficherClassement() {
     if (ClassementAnime == parametre.value) {
         parametre.value = "";
         titre.textContent = ClassementAnime;
-        afficherAnime();
+        afficheAnime();
     } else {
         titre.textContent = "Pas de resultat";
     }
