@@ -11,11 +11,11 @@ const section = document.getElementById("section");
 
 let cpt = 0;
 
-let JSON;
+let JSONFile;
 let JSONTrie;
 
 function afficheAnime (){
-    JSONTrie = JSON;
+    JSONTrie = JSONFile;
 
     let anime = JSONTrie["data"];
     
@@ -25,7 +25,7 @@ function afficheAnime (){
         taille = 10; 
     }
     
-    for (i = 0; i < taille; i++){
+    for (let i = 0; i < taille; i++){
         let article = document.createElement("article");
         let nom = document.createElement("h2");
         let image = new Image();
@@ -33,13 +33,13 @@ function afficheAnime (){
         let genre = document.createElement("p");
         let classement = document.createElement("p");
         let nb_episodes = document.createElement("p");
-    
+
         nom.textContent = anime[i]["title"];
         image.src = anime[i]["image"];
-        synopsis.textContent = "Synopsis" + anime[i]["synopsis"];
-        genre.textContent = "Genres" + anime[i]["genres"];
-        classement.textContent = "Classement" + anime[i]["ranking"];
-        nb_episodes.textContent = "Nombres d'épisodes" + anime[i]["episodes"];
+        synopsis.textContent = "Synopsis : " + anime[i]["synopsis"];
+        genre.textContent = "Genres : " + anime[i]["genres"];
+        classement.textContent = "Classement : " + anime[i]["ranking"];
+        nb_episodes.textContent = "Nombres d'épisodes : " + anime[i]["episodes"];
     
         article.appendChild(nom);
         article.appendChild(image);
@@ -63,9 +63,9 @@ effacerBtn.addEventListener("click", (event) => {
 
 submitBtn.addEventListener("click", () => {
 	alert("Recherche en cours...");
-    if (recherche.value == "nom") afficherNom();
-    if (recherche.value == "identifiant") afficherID();
-    if (recherche.value == "classement") afficherClassement();
+    if (rechercheType.value == "nom") afficherNom();
+    if (rechercheType.value == "identifiant") afficherID();
+    if (rechercheType.value == "classement") afficherClassement();
 });
 
 const forms = document.querySelectorAll(".form-container");
@@ -130,12 +130,11 @@ function afficherClassement() {
 
 
 
-setAPI();
+//setAPI();
 
-getJSON();
+//getJSON();
 
-
-JSON = {
+JSONFile = {
     "data": [
         {
             "_id": "9135",
@@ -397,5 +396,4 @@ JSON = {
         "totalPage": 1
     }
 }
-
 afficheAnime();
