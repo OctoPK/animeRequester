@@ -72,6 +72,7 @@ function afficherNom(){
 		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
+}
 function afficherNom() {
     const nomAnime = "Anime";
     if (nomAnime.includes(parametre.value)) {
@@ -93,6 +94,7 @@ function afficherID(){
 		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
+}
 function afficherID() {
     const IDAnime = "0052";
     if (IDAnime == parametre.value) {
@@ -114,6 +116,7 @@ function afficherClassement(){
 		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
+}
 function afficherClassement() {
     const ClassementAnime = "103";
     if (ClassementAnime == parametre.value) {
