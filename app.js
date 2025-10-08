@@ -1,4 +1,4 @@
-import { setAPI } from "./js/KeyApiHandler.js";
+import { getJSON, setAPI } from "./js/ApiHandler.js";
 
 const resultDisplay = document.getElementById("result");
 const effacerBtn = document.getElementById("effacer");
@@ -56,16 +56,19 @@ function afficheAnime (){
 }
 
 
-effacerBtn.addEventListener("click", () => {
+effacerBtn.addEventListener("click", (event) => {
+	event.preventDefault();
     parametre.value = "";
 });
 
 submitBtn.addEventListener("click", () => {
+	alert("Recherche en cours...");
     if (recherche.value == "nom") afficherNom();
     if (recherche.value == "identifiant") afficherID();
     if (recherche.value == "classement") afficherClassement();
 });
 
+const forms = document.querySelectorAll(".form-container");
 sombre.addEventListener("click", () => {
     if (cpt % 2 == 0) {
         document.body.style.backgroundColor = "DarkGrey";
@@ -73,72 +76,63 @@ sombre.addEventListener("click", () => {
         sombre.textContent = "Mode clair";
         sombre.style.backgroundColor = "White";
         sombre.style.color = "Black";
-        cpt++;
+		forms.forEach((form) => {
+			form.style.backgroundColor = "lightblue"; // Remplacez "lightblue" par la couleur souhaitée
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); // Ajoute une ombre légère pour un effet de profondeur
+		});
+		cpt++;
     } else {
         document.body.style.backgroundColor = "White";
         document.body.style.color = "Black";
         sombre.textContent = "Mode sombre";
         sombre.style.backgroundColor = "Black";
         sombre.style.color = "White";
+		forms.forEach((form) => {
+			form.style.backgroundColor = "White"; // Remplacez "lightblue" par la couleur souhaitée
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)"); // Ajoute une ombre légère pour un effet de profondeur
+		});
         cpt++;
     }
 });
 
-function afficherNom(){
-	const nomAnime ="Anime";
-	if (nomAnime.includes(parametre.value)){
-		parametre.value = "";
-		titre.textContent = nomAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
+function afficherNom() {
+    const nomAnime = "Anime";
+    if (nomAnime.includes(parametre.value)) {
+        parametre.value = "";
+        titre.textContent = nomAnime;
+        afficheAnime();
+    } else {
+        titre.textContent = "Pas de resultat";
+    }
 }
 
-function afficherID(){
-	const IDAnime ="0052";
-	if (IDAnime == parametre.value){
-		parametre.value = "";
-		titre.textContent = IDAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
+function afficherID() {
+    const IDAnime = "0052";
+    if (IDAnime == parametre.value) {
+        parametre.value = "";
+        titre.textContent = IDAnime;
+        afficheAnime();
+    } else {
+        titre.textContent = "Pas de resultat";
+    }
 }
 
-function afficherClassement(){
-	const ClassementAnime ="103";
-	if (ClassementAnime == parametre.value){
-		parametre.value = "";
-		titre.textContent = ClassementAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
+function afficherClassement() {
+    const ClassementAnime = "103";
+    if (ClassementAnime == parametre.value) {
+        parametre.value = "";
+        titre.textContent = ClassementAnime;
+        afficheAnime();
+    } else {
+        titre.textContent = "Pas de resultat";
+    }
 }
+
 
 
 setAPI();
 
-/*const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=Fullmetal&genres=Fantasy%2CDrama&sortBy=ranking&sortOrder=asc';
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': '10a54a5fa3msh0fc12837cdd81d7p1fd387jsn601f20cc9dbc',
-		'x-rapidapi-host': 'anime-db.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	resultDisplay.textContent = result;
-} catch (error) {
-	resultDisplay.textContent = 'Erreur';
-}*/
+getJSON();
 
 
 JSON = {
