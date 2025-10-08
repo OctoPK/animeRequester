@@ -10,11 +10,37 @@ const sombre = document.getElementById("sombre");
 
 let cpt = 0;
 
-effacerBtn.addEventListener("click", () => {
+let JSON;
+let JSONTrie;
+
+function afficheAnime (){
+
+	JSONTrie = JSON;
+
+	for (i = 0; i < JSONTrie.length; i++){
+		let nom = document.createElement("h2");
+		let synopsis = document.createElement("p");
+		let genre = document.createElement("p");
+		let classement = document.createElement("p");
+		let nb_episodes = document.createElement("p");
+
+		nom.textContent = JSONTrie["nom"];
+		synopsis.textContent = JSONTrie["synopsis"];
+		genre.textContent = JSONTrie["genre"];
+		classement.textContent = JSONTrie["classement"];
+		nb_episodes.textContent = JSONTrie["nb_episodes"];
+
+	}
+}
+
+
+effacerBtn.addEventListener("click", (event) => {
+	event.preventDefault();
     parametre.value = "";
 });
 
 submitBtn.addEventListener("click", () => {
+	alert("Recherche en cours...");
     if (recherche.value == "nom") afficherNom();
     if (recherche.value == "identifiant") afficherID();
     if (recherche.value == "classement") afficherClassement();
@@ -71,7 +97,7 @@ function afficherClassement() {
     }
 }
 
-function afficherAnime() {}
+
 
 setAPI();
 
