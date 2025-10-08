@@ -8,6 +8,30 @@ const sombre = document.getElementById('sombre');
 
 let cpt = 0;
 
+let JSON;
+let JSONTrie;
+
+function afficheAnime (){
+
+	JSONTrie = JSON;
+
+	for (i = 0; i < JSONTrie.length; i++){
+		let nom = document.createElement("h2");
+		let synopsis = document.createElement("p");
+		let genre = document.createElement("p");
+		let classement = document.createElement("p");
+		let nb_episodes = document.createElement("p");
+
+		nom.textContent = JSONTrie["nom"];
+		synopsis.textContent = JSONTrie["synopsis"];
+		genre.textContent = JSONTrie["genre"];
+		classement.textContent = JSONTrie["classement"];
+		nb_episodes.textContent = JSONTrie["nb_episodes"];
+
+	}
+}
+
+
 
 effacerBtn.addEventListener('click', () => {
 	parametre.value = "";
@@ -44,6 +68,7 @@ function afficherNom(){
 		titre.textContent = nomAnime;
 		afficherAnime();
 	} else{
+		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
 }
@@ -55,6 +80,7 @@ function afficherID(){
 		titre.textContent = IDAnime;
 		afficherAnime();
 	} else{
+		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
 }
@@ -66,6 +92,7 @@ function afficherClassement(){
 		titre.textContent = ClassementAnime;
 		afficherAnime();
 	} else{
+		parametre.value = "";
 		titre.textContent ="Pas de resultat";
 	}
 }
