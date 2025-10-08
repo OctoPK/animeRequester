@@ -34,11 +34,13 @@ function afficheAnime (){
 }
 
 
-effacerBtn.addEventListener("click", () => {
+effacerBtn.addEventListener("click", (event) => {
+	event.preventDefault();
     parametre.value = "";
 });
 
 submitBtn.addEventListener("click", () => {
+	alert("Recherche en cours...");
     if (recherche.value == "nom") afficherNom();
     if (recherche.value == "identifiant") afficherID();
     if (recherche.value == "classement") afficherClassement();
@@ -62,17 +64,6 @@ sombre.addEventListener("click", () => {
     }
 });
 
-function afficherNom(){
-	const nomAnime ="Anime";
-	if (nomAnime.includes(parametre.value)){
-		parametre.value = "";
-		titre.textContent = nomAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
-}
 function afficherNom() {
     const nomAnime = "Anime";
     if (nomAnime.includes(parametre.value)) {
@@ -84,17 +75,6 @@ function afficherNom() {
     }
 }
 
-function afficherID(){
-	const IDAnime ="0052";
-	if (IDAnime == parametre.value){
-		parametre.value = "";
-		titre.textContent = IDAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
-}
 function afficherID() {
     const IDAnime = "0052";
     if (IDAnime == parametre.value) {
@@ -106,17 +86,6 @@ function afficherID() {
     }
 }
 
-function afficherClassement(){
-	const ClassementAnime ="103";
-	if (ClassementAnime == parametre.value){
-		parametre.value = "";
-		titre.textContent = ClassementAnime;
-		afficherAnime();
-	} else{
-		parametre.value = "";
-		titre.textContent ="Pas de resultat";
-	}
-}
 function afficherClassement() {
     const ClassementAnime = "103";
     if (ClassementAnime == parametre.value) {
@@ -128,7 +97,7 @@ function afficherClassement() {
     }
 }
 
-function afficherAnime() {}
+
 
 setAPI();
 
