@@ -34,7 +34,8 @@ function afficheAnime (){
         let genre = document.createElement("p");
         let classement = document.createElement("p");
         let nb_episodes = document.createElement("p");
-
+        
+        article.classList.add("anime");
         nom.textContent = anime[i]["title"];
         image.src = anime[i]["image"];
         synopsis.textContent = "Synopsis : " + anime[i]["synopsis"];
@@ -53,8 +54,8 @@ function afficheAnime (){
     
     
     }
-	
 }
+
 
 
 effacerBtn.addEventListener("click", (event) => {
@@ -71,6 +72,7 @@ submitBtn.addEventListener("click", () => {
 const forms = document.querySelectorAll(".form-container");
 
 sombre.addEventListener("click", () => {
+    let articles = document.querySelectorAll("article");
     if (sessionStorage["couleur"] == "clair") {
         document.body.style.backgroundColor = "DarkGrey";
         document.body.style.color = "White";
@@ -81,6 +83,11 @@ sombre.addEventListener("click", () => {
 			form.style.backgroundColor = "lightblue"; // Remplacez "lightblue" par la couleur souhaitée
 			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); // Ajoute une ombre légère pour un effet de profondeur
 		});
+        articles.forEach((article) => {
+            article.style.backgroundColor = "lightblue";
+            article.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); 
+        });
+        
 		sessionStorage["couleur"] = "sombre";
     } else {
         document.body.style.backgroundColor = "White";
@@ -89,9 +96,13 @@ sombre.addEventListener("click", () => {
         sombre.style.backgroundColor = "Black";
         sombre.style.color = "White";
 		forms.forEach((form) => {
-			form.style.backgroundColor = "White"; // Remplacez "lightblue" par la couleur souhaitée
-			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)"); // Ajoute une ombre légère pour un effet de profondeur
+			form.style.backgroundColor = "White";
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)");
 		});
+        articles.forEach((article) => {
+            article.style.backgroundColor = "White";
+            article.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)");
+        });
         sessionStorage["couleur"] = "clair";
     }
 });
