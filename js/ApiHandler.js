@@ -35,7 +35,7 @@ export async function getJSON() {
         const response = await fetch(Surl, options);
         const result = await response.json();
         console.log(result);
-        return result.data;
+        return result;
     } catch (error) {
         console.log("Erreur");
     }
@@ -108,13 +108,13 @@ export function changerURL(type, param) {
         case "types":
             url[13] += param;
         case "ranking":
-            for (i = 1; i <= url.length; i++) {
+            for (let i = 1; i < url.length; i++) {
                 url[i] = "";
             }
             url[0] = url[0].substring(0, url[0].length - 1) + "/by-ranking/" + param;
             break;
         case "id":
-            for (i = 1; i <= url.length; i++) {
+            for (let i = 1; i < url.length; i++) {
                 url[i] = "";
             }
             url[0] = url[0].substring(0, url[0].length - 1) + "/by-id/" + param;
