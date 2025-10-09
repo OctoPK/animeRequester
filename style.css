@@ -48,12 +48,36 @@
   }
 
   .form-container input {
-
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 75%;
 
+  }
+
+  #submit, #effacer {
+    background-color: blue;
+    color: white;
+  }
+
+  #submit {
+    margin-left: 35%;
+  }
+
+  #effacer {
+    margin-left: 10%;
   }
 
   #sombre{
     background-color: black;
     color: white;
+    margin-top: 10px;
+  }
+
+  button {
+    width: 100px;
+    height: 30px;
+  }
+
+  section{
+    text-align: center;
   }

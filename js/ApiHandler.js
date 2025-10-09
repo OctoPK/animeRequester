@@ -35,6 +35,7 @@ export async function getJSON() {
         const response = await fetch(Surl, options);
         const result = await response.json();
         console.log(result);
+        return result;
     } catch (error) {
         console.log("Erreur");
     }
