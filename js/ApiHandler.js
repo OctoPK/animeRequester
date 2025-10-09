@@ -55,6 +55,12 @@ export async function getJSON() {
  *
  * La size, c'est le nombre d'anime qu'on veut récupéré.
  *
+ * Le name fonctionne pour les titres mais également pour les titres alternatives des animés. La recherches ignores le tri.
+ *
+ * Le ranking, c'est pour recherché un animé par rapport à son classement.
+ *
+ * Le id recherche un animé par rapport à son id.
+ *
  * Les différents genres sont :
  * - Award Winning
  * - Action
