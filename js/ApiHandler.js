@@ -39,3 +39,68 @@ export async function getJSON() {
         console.log("Erreur");
     }
 }
+
+/**
+ * Cette fonction est a appelé le nombre de fois qu'on modifie un paramètre de l'url.
+ * ex :
+ * On veut rechercher par genre et titre, on doit appelé la fonction une fois pour la recherche par titre et une autre fois pour la recherche par genre.
+ *
+ * Les types peuvents être (name, size, genres, sortBy, sortOrder, types). Lorsqu'un mauvais type est rentré, une alert est lancé par la fonction.
+ * Les types sont sensibles à la case donc les écrire exactement de la façon que j'ai dite plus haut.
+ *
+ * Le sortBy est soit ranking ou title.
+ *
+ * Le sortOrder est soit asc ou desc.
+ *
+ * La size, c'est le nombre d'anime qu'on veut récupéré.
+ *
+ * Les différents genres sont :
+ * - Award Winning
+ * - Action
+ * - Suspense
+ * - Horror
+ * - Ecchi
+ * - Avant Garde
+ * - Sports
+ * - Supernatural
+ * - Fantasy
+ * - Gourmet
+ * - Boys Love
+ * - Drama
+ * - Comedy
+ * - Mystery
+ * - Girls Love
+ * - Slice of Life
+ * - Adventure
+ * - Romance
+ * - Sci-Fi
+ * - Erotica
+ * - Hentai
+ * Pour les genres, ils sont sensible à la case donc écrivez comme ce qui est au dessus et quand il y a plusieur genre les séparées par "2%c".
+ * @param {string} type - le type de recherche qu'on veut faire
+ * @param {string} param - la valeur à mettre dans l'url
+ */
+export function changeURL(type, param) {
+    switch (type) {
+        case "size":
+            url[3] = "size=" + param;
+            break;
+        case "name":
+            url[5] += param;
+            break;
+        case "genres":
+            url[7] += param;
+            break;
+        case "sortBy":
+            url[9] = "sortBy=" + param;
+            break;
+        case "sortOrder":
+            url[11] = "sortOrder=" + param;
+            break;
+        case "types":
+            url[13] += param;
+        default:
+            alert("champ url introuvable");
+            break;
+    }
+}
