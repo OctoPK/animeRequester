@@ -1,4 +1,4 @@
-import { getJSON, setAPI } from "./js/ApiHandler.js";
+import { getJSON, setAPI, changerURL } from "./js/ApiHandler.js";
 
 const resultDisplay = document.getElementById("result");
 const effacerBtn = document.getElementById("effacer");
@@ -16,17 +16,15 @@ let JSONTrie;
 sessionStorage["couleur"] = 0;
 
 function afficheAnime (){
-    JSONTrie = JSONFile;
+    console.log(99);
+    console.log("JSONTrie");
+    console.log(JSONTrie);
 
     let anime = JSONTrie["data"];
+
+   // let taille = anime.length;
     
-    let taille = anime.length;
-    
-    if (taille > 10){
-        taille = 10; 
-    }
-    
-    for (let i = 0; i < taille; i++){
+    for (let i = 0; i < 1; i++){
         let article = document.createElement("article");
         let nom = document.createElement("h2");
         let image = new Image();
@@ -35,13 +33,14 @@ function afficheAnime (){
         let classement = document.createElement("p");
         let nb_episodes = document.createElement("p");
 
-        nom.textContent = anime[i]["title"];
-        image.src = anime[i]["image"];
+        let h = anime[i]["title"];
+        //nom.textContent = anime[i]["title"];
+        /*image.src = anime[i]["image"];
         synopsis.textContent = "Synopsis : " + anime[i]["synopsis"];
         genre.textContent = "Genres : " + anime[i]["genres"];
         classement.textContent = "Classement : " + anime[i]["ranking"];
         nb_episodes.textContent = "Nombres d'épisodes : " + anime[i]["episodes"];
-    
+    */
         article.appendChild(nom);
         article.appendChild(image);
         article.appendChild(synopsis);
@@ -97,65 +96,32 @@ sombre.addEventListener("click", () => {
 });
 
 function afficherNom() {
-    /*changerURL("title", "parametre.value");
+    alert("Recherche" + parametre.value);
+    changerURL("name", parametre.value);
     changerURL("size", "10");
-    size = 10
-    name = parametre.value
-    JSONTRIE = getJSON()
-    afficheAnime()*/
-    const nomAnime = "Anime";
-    if (nomAnime.includes(parametre.value)) {
-        parametre.value = "";
-        titre.textContent = nomAnime;
-        afficheAnime();
-    } else {
-        titre.textContent = "Pas de resultat";
-    }
+    JSONTrie = getJSON();
+    afficheAnime();
 }
 
 function afficherID() {
-    /*changerURL("id", "parametre.value");
+    changerURL("id", parametre.value);
     changerURL("size", "1");
-    size = 1
-    _id = parametre.value
-    JSONTRIE = getJSON()
-    JSONTRIE = JSON
-    afficheAnime()*/
-    const IDAnime = "0052";
-    if (IDAnime == parametre.value) {
-        parametre.value = "";
-        titre.textContent = IDAnime;
-        afficheAnime();
-    } else {
-        titre.textContent = "Pas de resultat";
-    }
+    JSONTrie = getJSON();
+    afficheAnime();
 }
 
 function afficherClassement() {
-    /*changerURL("ranking", "parametre.value");
+    changerURL("ranking", parametre.value);
     changerURL("size", "1");
-    size = 1
-    ranking = parametre.value
-    JSONTRIE = getJSON()
-    JSONTRIE = JSON
-    afficheAnime()*/
-    const ClassementAnime = "103";
-    if (ClassementAnime == parametre.value) {
-        parametre.value = "";
-        titre.textContent = ClassementAnime;
-        afficheAnime();
-    } else {
-        titre.textContent = "Pas de resultat";
-    }
+    JSONTrie = getJSON();
+    afficheAnime();
 }
 
 
 
-/*setAPI();
+setAPI();
 
-JSONFile = getJSON();*/
-
-JSONFile = {
+/*JSONFile = {
     "data": [
         {
             "_id": "9135",
@@ -416,6 +382,4 @@ JSONFile = {
         "totalData": 9,
         "totalPage": 1
     }
-}
-
-afficheAnime();
+}*/

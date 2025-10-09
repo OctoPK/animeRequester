@@ -35,7 +35,7 @@ export async function getJSON() {
         const response = await fetch(Surl, options);
         const result = await response.json();
         console.log(result);
-        return result;
+        return result.data;
     } catch (error) {
         console.log("Erreur");
     }
@@ -81,7 +81,7 @@ export async function getJSON() {
  * @param {string} type - le type de recherche qu'on veut faire
  * @param {string} param - la valeur à mettre dans l'url
  */
-export function changeURL(type, param) {
+export function changerURL(type, param) {
     switch (type) {
         case "size":
             url[3] = "size=" + param;
