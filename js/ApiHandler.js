@@ -46,7 +46,7 @@ export async function getJSON() {
  * ex :
  * On veut rechercher par genre et titre, on doit appelé la fonction une fois pour la recherche par titre et une autre fois pour la recherche par genre.
  *
- * Les types peuvents être (name, size, genres, sortBy, sortOrder, types). Lorsqu'un mauvais type est rentré, une alert est lancé par la fonction.
+ * Les types peuvents être (name, size, genres, sortBy, sortOrder, types, ranking, id). Lorsqu'un mauvais type est rentré, une alert est lancé par la fonction.
  * Les types sont sensibles à la case donc les écrire exactement de la façon que j'ai dite plus haut.
  *
  * Le sortBy est soit ranking ou title.
@@ -54,6 +54,12 @@ export async function getJSON() {
  * Le sortOrder est soit asc ou desc.
  *
  * La size, c'est le nombre d'anime qu'on veut récupéré.
+ *
+ * Le name fonctionne pour les titres mais également pour les titres alternatives des animés. La recherches ignores le tri.
+ *
+ * Le ranking, c'est pour recherché un animé par rapport à son classement.
+ *
+ * Le id recherche un animé par rapport à son id.
  *
  * Les différents genres sont :
  * - Award Winning
@@ -77,7 +83,8 @@ export async function getJSON() {
  * - Sci-Fi
  * - Erotica
  * - Hentai
- * Pour les genres, ils sont sensible à la case donc écrivez comme ce qui est au dessus et quand il y a plusieur genre les séparées par "2%c".
+ * Pour les genres, ils sont sensible à la case donc écrivez comme ce qui est au dessus et quand il y a plusieur
+ * genre les séparées par "2%C" et ne pas mettre d'espaces entre les différents genre.
  * @param {string} type - le type de recherche qu'on veut faire
  * @param {string} param - la valeur à mettre dans l'url
  */
@@ -100,6 +107,18 @@ export function changerURL(type, param) {
             break;
         case "types":
             url[13] += param;
+        case "ranking":
+            for (i = 1; i <= url.length; i++) {
+                url[i] = "";
+            }
+            url[0] = url[0].substring(0, url[0].length - 1) + "/by-ranking/" + param;
+            break;
+        case "id":
+            for (i = 1; i <= url.length; i++) {
+                url[i] = "";
+            }
+            url[0] = url[0].substring(0, url[0].length - 1) + "/by-id/" + param;
+            break;
         default:
             alert("champ url introuvable");
             break;
