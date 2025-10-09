@@ -13,6 +13,7 @@ let cpt = 0;
 
 let JSONFile;
 let JSONTrie;
+sessionStorage["couleur"] = 0;
 
 function afficheAnime (){
     JSONTrie = JSONFile;
@@ -33,7 +34,8 @@ function afficheAnime (){
         let genre = document.createElement("p");
         let classement = document.createElement("p");
         let nb_episodes = document.createElement("p");
-
+        
+        article.classList.add("anime");
         nom.textContent = anime[i]["title"];
         image.src = anime[i]["image"];
         synopsis.textContent = "Synopsis : " + anime[i]["synopsis"];
@@ -52,8 +54,8 @@ function afficheAnime (){
     
     
     }
-	
 }
+
 
 
 effacerBtn.addEventListener("click", (event) => {
@@ -62,15 +64,16 @@ effacerBtn.addEventListener("click", (event) => {
 });
 
 submitBtn.addEventListener("click", () => {
-	alert("Recherche en cours...");
     if (rechercheType.value == "nom") afficherNom();
     if (rechercheType.value == "identifiant") afficherID();
     if (rechercheType.value == "classement") afficherClassement();
 });
 
 const forms = document.querySelectorAll(".form-container");
+
 sombre.addEventListener("click", () => {
-    if (cpt % 2 == 0) {
+    let articles = document.querySelectorAll("article");
+    if (sessionStorage["couleur"] == "clair") {
         document.body.style.backgroundColor = "DarkGrey";
         document.body.style.color = "White";
         sombre.textContent = "Mode clair";
@@ -80,7 +83,12 @@ sombre.addEventListener("click", () => {
 			form.style.backgroundColor = "lightblue"; // Remplacez "lightblue" par la couleur souhaitée
 			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); // Ajoute une ombre légère pour un effet de profondeur
 		});
-		cpt++;
+        articles.forEach((article) => {
+            article.style.backgroundColor = "lightblue";
+            article.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); 
+        });
+        
+		sessionStorage["couleur"] = "sombre";
     } else {
         document.body.style.backgroundColor = "White";
         document.body.style.color = "Black";
@@ -88,14 +96,24 @@ sombre.addEventListener("click", () => {
         sombre.style.backgroundColor = "Black";
         sombre.style.color = "White";
 		forms.forEach((form) => {
-			form.style.backgroundColor = "White"; // Remplacez "lightblue" par la couleur souhaitée
-			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)"); // Ajoute une ombre légère pour un effet de profondeur
+			form.style.backgroundColor = "White";
+			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)");
 		});
-        cpt++;
+        articles.forEach((article) => {
+            article.style.backgroundColor = "White";
+            article.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)");
+        });
+        sessionStorage["couleur"] = "clair";
     }
 });
 
 function afficherNom() {
+    /*changerURL("title", "parametre.value");
+    changerURL("size", "10");
+    size = 10
+    name = parametre.value
+    JSONTRIE = getJSON()
+    afficheAnime()*/
     const nomAnime = "Anime";
     if (nomAnime.includes(parametre.value)) {
         parametre.value = "";
@@ -107,6 +125,13 @@ function afficherNom() {
 }
 
 function afficherID() {
+    /*changerURL("id", "parametre.value");
+    changerURL("size", "1");
+    size = 1
+    _id = parametre.value
+    JSONTRIE = getJSON()
+    JSONTRIE = JSON
+    afficheAnime()*/
     const IDAnime = "0052";
     if (IDAnime == parametre.value) {
         parametre.value = "";
@@ -118,6 +143,13 @@ function afficherID() {
 }
 
 function afficherClassement() {
+    /*changerURL("ranking", "parametre.value");
+    changerURL("size", "1");
+    size = 1
+    ranking = parametre.value
+    JSONTRIE = getJSON()
+    JSONTRIE = JSON
+    afficheAnime()*/
     const ClassementAnime = "103";
     if (ClassementAnime == parametre.value) {
         parametre.value = "";
@@ -130,9 +162,9 @@ function afficherClassement() {
 
 
 
-//setAPI();
+/*setAPI();
 
-//getJSON();
+JSONFile = getJSON();*/
 
 JSONFile = {
     "data": [
@@ -396,4 +428,5 @@ JSONFile = {
         "totalPage": 1
     }
 }
+
 afficheAnime();
