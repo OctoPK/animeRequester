@@ -15,7 +15,7 @@ const genreClass = document.getElementsByClassName("genre");
 choixGenres.style.display = "none";
 
 let JSONTrie;
-let listGenresSelection;
+let listGenresSelection = [];
 sessionStorage["couleur"] = "clair";
 
 async function selectionGenre(){
@@ -62,7 +62,7 @@ function afficheAnime (){
 
     let anime = [];
 
-    if (rechercheType.value == "nom"){
+    if (rechercheType.value == "nom" || rechercheType.value == "genres"){
         anime = JSONTrie["data"];
     }
     if (rechercheType.value == "identifiant" || rechercheType.value == "classement"){
@@ -71,7 +71,7 @@ function afficheAnime (){
 
     let taille = anime.length;
     
-    for (let i = 0; i < taille; i++){
+    /*for (let i = 0; i < taille; i++){
         let article = document.createElement("article");
         let nom = document.createElement("h2");
         let image = new Image();
@@ -96,7 +96,26 @@ function afficheAnime (){
         article.appendChild(nb_episodes);
         section.appendChild(article);
     
-    }
+    }*/
+
+    for (let i = 0; i < listGenres.length; i++) {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("genre-item");
+
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.className = "genre";
+    input.id = `genre-${listGenres[i]["_id"]}`;
+    input.value = listGenres[i]["_id"];
+
+    const label = document.createElement("label");
+    label.setAttribute("for", `genre-${listGenres[i]["_id"]}`);
+    label.textContent = listGenres[i]["_id"];
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(label);
+    article.appendChild(wrapper);
+}
 }
 
 function afficherErreur(){
@@ -135,15 +154,13 @@ submitBtn.addEventListener("click", () => {
         if (rechercheType.value == "identifiant") afficherID();
         if (rechercheType.value == "classement") afficherClassement();
         if (rechercheType.value == "genres") {
-            console.log(genreClass);
-            Array.choixGenres.forEach()
-            for (let i = 0; genreClass.length; i++){
-                if (genreClass[i].checked){
-                    listGenresSelection += genreClass[i];
-                }
+        for (let i = 0; i < genreClass.length; i++){
+            if (genreClass[i].checked){
+                listGenresSelection.push(genreClass[i].value);
             }
-            console.log(listGenresSelection);
-            afficherGenre();
+        }
+        console.log("Genres sélectionnés :", listGenresSelection);
+        afficherGenre();
     
         }
     }
@@ -227,7 +244,13 @@ async function afficherClassement() {
 
 async function afficherGenre() {
     resetURL();
-    changerURL("name", parametre.value);
+    if (listGenresSelection.length > 0) {
+        changerURL("genres", listGenresSelection.join(","));
+        listGenresSelection = [];
+    } else {
+        afficherErreur();
+        return; 
+    }
     JSONTrie = await getJSON();
     afficheAnime();
 }
