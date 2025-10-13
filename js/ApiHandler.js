@@ -1,4 +1,4 @@
-let APIKey = null;
+sessionStorage["APIKey"] = null;
 let APIHost = "anime-db.p.rapidapi.com";
 let url = [
     "https://anime-db.p.rapidapi.com/anime?",
@@ -19,14 +19,14 @@ let url = [
 const options = {
     method: "GET",
     headers: {
-        "x-rapidapi-key": APIKey,
+        "x-rapidapi-key": sessionStorage["APIKey"],
         "x-rapidapi-host": APIHost,
     },
 };
 
 export function setAPI() {
-    APIKey = prompt("Entrez votre clé API pour commencez : ");
-    options.headers["x-rapidapi-key"] = APIKey;
+    sessionStorage["APIKey"] = prompt("Entrez votre clé API pour commencez : ");
+    options.headers["x-rapidapi-key"] = sessionStorage["APIKey"];
 }
 
 /**
@@ -41,7 +41,7 @@ export async function getJSON() {
         console.log(result);
         return result;
     } catch (error) {
-        console.log("Erreur");
+        console.error("Erreur");
         return -1;
     }
 }
@@ -147,4 +147,17 @@ export function resetURL() {
         "&",
         "types=",
     ];
+}
+
+export async function getGenre() {
+    let url = "https://anime-db.p.rapidapi.com/genre";
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
 }
