@@ -1,4 +1,4 @@
-import { getJSON, setAPI, changerURL } from "./js/ApiHandler.js";
+import { getJSON, setAPI, changerURL, resetURL } from "./js/ApiHandler.js";
 
 const resultDisplay = document.getElementById("result");
 const effacerBtn = document.getElementById("effacer");
@@ -7,13 +7,20 @@ const rechercheType = document.getElementById("recherche");
 const submitBtn = document.getElementById("submit");
 const titre = document.getElementById("titre");
 const sombre = document.getElementById("sombre");
+const choixGenres = document.getElementById("choixGenres");
 const section = document.getElementById("section");
+const checkbox = document.getElementsByTagName("checkbox");
 
 let cpt = 0;
 
 let JSONFile;
 let JSONTrie;
 sessionStorage["couleur"] = "clair";
+
+choixGenres.style.display = "none";
+
+
+
 
 function afficheAnime (){
     section.innerHTML = "";
@@ -71,6 +78,7 @@ submitBtn.addEventListener("click", () => {
     if (rechercheType.value == "nom") afficherNom();
     if (rechercheType.value == "identifiant") afficherID();
     if (rechercheType.value == "classement") afficherClassement();
+    if (rechercheType.value == "genres") afficherGenre();
 });
 
 const forms = document.querySelectorAll(".form-container");
@@ -112,6 +120,7 @@ sombre.addEventListener("click", () => {
 });
 
 async function afficherNom() {
+    resetURL();
     changerURL("name", parametre.value);
     changerURL("size", "10");
     JSONTrie = await getJSON();
@@ -119,13 +128,22 @@ async function afficherNom() {
 }
 
 async function afficherID() {
+    resetURL();
     changerURL("id", parametre.value);
     JSONTrie = await getJSON();
     afficheAnime();
 }
 
 async function afficherClassement() {
+    resetURL();
     changerURL("ranking", parametre.value);
+    JSONTrie = await getJSON();
+    afficheAnime();
+}
+
+async function afficherGenre() {
+    resetURL();
+    changerURL("name", parametre.value);
     JSONTrie = await getJSON();
     afficheAnime();
 }
