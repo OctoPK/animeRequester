@@ -41,6 +41,8 @@ async function selectionGenre(){
 
 
 rechercheType.addEventListener('change', () => {
+    parametre.value = "";
+    listGenresSelection = [];
     changerAffichage();
 })
 
@@ -69,9 +71,11 @@ function afficheAnime (){
         anime = [JSONTrie]
     }
 
+    console.log(anime);
+
     let taille = anime.length;
     
-    /*for (let i = 0; i < taille; i++){
+    for (let i = 0; i < taille; i++){
         let article = document.createElement("article");
         let nom = document.createElement("h2");
         let image = new Image();
@@ -96,26 +100,8 @@ function afficheAnime (){
         article.appendChild(nb_episodes);
         section.appendChild(article);
     
-    }*/
+    }
 
-    for (let i = 0; i < listGenres.length; i++) {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("genre-item");
-
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = "genre";
-    input.id = `genre-${listGenres[i]["_id"]}`;
-    input.value = listGenres[i]["_id"];
-
-    const label = document.createElement("label");
-    label.setAttribute("for", `genre-${listGenres[i]["_id"]}`);
-    label.textContent = listGenres[i]["_id"];
-
-    wrapper.appendChild(input);
-    wrapper.appendChild(label);
-    article.appendChild(wrapper);
-}
 }
 
 function afficherErreur(){
@@ -142,11 +128,13 @@ effacerBtn.addEventListener("click", (event) => {
 	event.preventDefault();
     parametre.value = "";
     rechercheType.value = "nom";
+    section.innerHTML = "";
+    listGenresSelection = [];
     changerAffichage();
 });
 
 submitBtn.addEventListener("click", () => {
-    if (parametre.value == "" && rechercheType.value == "nom" || rechercheType.value == "identifiant" || rechercheType.value == "classement"){
+    if (parametre.value == "" && (rechercheType.value == "nom" || rechercheType.value == "identifiant" || rechercheType.value == "classement")){
         afficherErreur();
     }
     else {
@@ -159,7 +147,6 @@ submitBtn.addEventListener("click", () => {
                 listGenresSelection.push(genreClass[i].value);
             }
         }
-        console.log("Genres sélectionnés :", listGenresSelection);
         afficherGenre();
     
         }
@@ -222,6 +209,8 @@ async function afficherID() {
     resetURL();
     changerURL("id", parametre.value);
     JSONTrie = await getJSON();
+    console.log(JSONTrie);
+    alert(JSONTrie);
     if (JSONTrie == -1){
         afficherErreur();
     }
