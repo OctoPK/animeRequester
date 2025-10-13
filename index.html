@@ -1,93 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js" type="module"></script>
-    <title>Anime Requester</title>
-</head>
-<body>
-    <header>
-        <h1>ANIME REQUESTER</h1>
-        <button id="sombre">Mode sombre</button>
-    </header>
-    <main>
-    <form class = "form-container">
-
-        <label for="recherche">Choisissez un type de recherche : </label>
-        <select name="recherche" id="recherche">
-            <option value="nom">Nom</option>
-            <option value="identifiant">Identifiant</option>
-            <option value="classement">Classement</option>
-            <option value="classement">Genres</option>
-        </select>
-        <br>
-        <label for="parametre">Paramètres : </label>
-        <input
-        type="text"
-        id="parametre"
-        name="parametre"
-        />
-        <br>
-        <div id="choixGenres">
-        <form>
-            <p>Choix des genres : </p>
-            <input type="checkbox" id="action" name="action" value="action">
-            <label for="action">Action</label>
-            <input type="checkbox" id="suspense" name="suspense" value="suspense">
-            <label for="suspense">Suspense</label>
-            <input type="checkbox" id="horror" name="horror" value="horror">
-            <label for="horror">Horror</label>
-            <input type="checkbox" id="award" name="award" value="award">
-            <label for="award">Award Winning</label>
-            <input type="checkbox" id="ecchi" name="ecchi" value="ecchi">
-            <label for="ecchi">Ecchi</label>
-            <input type="checkbox" id="garde" name="garde" value="garde">
-            <label for="garde">Avant Garde</label>
-            <input type="checkbox" id="sports" name="sports" value="sports">
-            <label for="sports">Sports</label>
-            <input type="checkbox" id="suspense" name="suspense" value="suspense">
-            <label for="suspense">Suspense</label>
-            <input type="checkbox" id="supernatural" name="supernatural" value="supernatural">
-            <label for="supernatural">Supernatural</label>
-            <input type="checkbox" id="fantasy" name="fantasy" value="fantasy">
-            <label for="fantasy">Fantasy</label>
-            <input type="checkbox" id="gourmet" name="gourmet" value="gourmet">
-            <label for="gourmet">Gourmet</label>
-            <input type="checkbox" id="blove" name="blove" value="blove">
-            <label for="blove">Boys Love</label>
-            <input type="checkbox" id="glove" name="glove" value="glove">
-            <label for="glove">Girls Love</label>
-            <input type="checkbox" id="drama" name="drama" value="drama">
-            <label for="drama">Drama</label>
-            <input type="checkbox" id="comedy" name="comedy" value="comedy">
-            <label for="comedy">Comedy</label>
-            <input type="checkbox" id="mystery" name="mystery" value="mystery">
-            <label for="mystery">Mystery</label>
-            <input type="checkbox" id="slife" name="slife" value="slife">
-            <label for="slife">Slice of Life</label>
-            <input type="checkbox" id="adventure" name="adventure" value="adventure">
-            <label for="adventure">Adventure</label>
-            <input type="checkbox" id="hentai" name="hentai" value="hentai">
-            <label for="hentai">Hentai</label>
-            <input type="checkbox" id="erotica" name="erotica" value="erotica">
-            <label for="erotica">Erotica</label>
-            <input type="checkbox" id="romance" name="romance" value="romance">
-            <label for="romance">Romance</label>
-            <input type="checkbox" id="sci-fi" name="sci-fi" value="sci-fi">
-            <label for="sci-fi">Sci-Fi</label>
-
-          </form>
-        </div>
-        <button type="button" id="submit">Rechercher</button>
-        <button type="button" id="effacer">Effacer</button>
-    </form>
-    <section id="section"></section>
-    </main>
-    <footer>
-        <p>Projet de groupe : Biguey Armand, Belmond Tristan et Coombes Ethan</p>
-    </footer>
-
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="app.js" type="module"></script>
+        <title>Anime Requester</title>
+    </head>
+    <body>
+        <header>
+            <h1>ANIME REQUESTER</h1>
+            <button id="sombre">Mode sombre</button>
+        </header>
+        <main>
+            <form class="form-container">
+                <label for="recherche">Choisissez un type de recherche : </label>
+                <select name="recherche" id="recherche">
+                    <option value="nom">Nom</option>
+                    <option value="identifiant">Identifiant</option>
+                    <option value="classement">Classement</option>
+                    <option value="classement">Genres</option>
+                </select>
+                <br />
+                <label for="parametre">Paramètres : </label>
+                <input type="text" id="parametre" name="parametre" />
+                <br />
+                <div id="choixGenres">
+                    <p>Choix des genres :</p>
+                    <input type="checkbox" id="action" class="genre" name="genre" value="action" />
+                    <label for="action">Action</label>
+                    <input type="checkbox" id="suspense" name="genre" value="suspense" />
+                    <label for="suspense">Suspense</label>
+                    <input type="checkbox" id="horror" name="genre" value="horror" />
+                    <label for="horror">Horror</label>
+                    <input type="checkbox" id="award" name="genre" value="award winning" />
+                    <label for="award">Award Winning</label>
+                    <input type="checkbox" id="ecchi" name="genre" value="ecchi" />
+                    <label for="ecchi">Ecchi</label>
+                    <input type="checkbox" id="garde" name="genre" value="avant garde" />
+                    <label for="garde">Avant Garde</label>
+                    <input type="checkbox" id="sports" name="genre" value="sports" />
+                    <label for="sports">Sports</label>
+                    <input type="checkbox" id="supernatural" name="genre" value="supernatural" />
+                    <label for="supernatural">Supernatural</label>
+                    <input type="checkbox" id="fantasy" name="genre" value="fantasy" />
+                    <label for="fantasy">Fantasy</label>
+                    <input type="checkbox" id="gourmet" name="genre" value="gourmet" />
+                    <label for="gourmet">Gourmet</label>
+                    <input type="checkbox" id="boys" name="genre" value="boys love" />
+                    <label for="blove">Boys Love</label>
+                    <input type="checkbox" id="girls" name="genre" value="girls" />
+                    <label for="glove">Girls Love</label>
+                    <input type="checkbox" id="drama" name="genre" value="drama" />
+                    <label for="drama">Drama</label>
+                    <input type="checkbox" id="comedy" name="genre" value="comedy" />
+                    <label for="comedy">Comedy</label>
+                    <input type="checkbox" id="mystery" name="genre" value="mystery" />
+                    <label for="mystery">Mystery</label>
+                    <input type="checkbox" id="slife" name="genre" value="slife of life" />
+                    <label for="slife">Slice of Life</label>
+                    <input type="checkbox" id="adventure" name="genre" value="adventure" />
+                    <label for="adventure">Adventure</label>
+                    <input type="checkbox" id="hentai" name="genre" value="hentai" />
+                    <label for="hentai">Hentai</label>
+                    <input type="checkbox" id="erotica" name="genre" value="erotica" />
+                    <label for="erotica">Erotica</label>
+                    <input type="checkbox" id="romance" name="genre" value="romance" />
+                    <label for="romance">Romance</label>
+                    <input type="checkbox" id="sci-fi" name="genre" value="sci-fi" />
+                    <label for="sci-fi">Sci-Fi</label>
+                </div>
+                <button type="button" id="submit">Rechercher</button>
+                <button type="button" id="effacer">Effacer</button>
+            </form>
+            <section id="section"></section>
+        </main>
+        <footer>
+            <p>Projet de groupe : Biguey Armand, Belmond Tristan et Coombes Ethan</p>
+        </footer>
+    </body>
 </html>

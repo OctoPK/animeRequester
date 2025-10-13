@@ -41,7 +41,7 @@ export async function getJSON() {
         console.log(result);
         return result;
     } catch (error) {
-        console.log("Erreur");
+        console.error("Erreur");
         return -1;
     }
 }
@@ -147,4 +147,17 @@ export function resetURL() {
         "&",
         "types=",
     ];
+}
+
+export async function getGenre() {
+    let url = "https://anime-db.p.rapidapi.com/genre";
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
 }
