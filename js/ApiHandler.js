@@ -1,4 +1,3 @@
-sessionStorage["APIKey"] = null;
 let APIHost = "anime-db.p.rapidapi.com";
 let url = [
     "https://anime-db.p.rapidapi.com/anime?",
@@ -25,8 +24,11 @@ const options = {
 };
 
 export function setAPI() {
-    sessionStorage["APIKey"] = prompt("Entrez votre clé API pour commencez : ");
+    if (sessionStorage["APIKey"] == null){
+        sessionStorage["APIKey"] = prompt("Entrez votre clé API pour commencez : ");
+    }
     options.headers["x-rapidapi-key"] = sessionStorage["APIKey"];
+    
 }
 
 /**
@@ -149,7 +151,7 @@ export function resetURL() {
     ];
 }
 
-export async function getGenre() {
+export async function getGenres() {
     let url = "https://anime-db.p.rapidapi.com/genre";
 
     try {

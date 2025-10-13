@@ -1,43 +1,41 @@
-import { getJSON, setAPI, changerURL, resetURL } from "./js/ApiHandler.js";
+import { getJSON, setAPI, changerURL, resetURL, getGenres } from "./js/ApiHandler.js";
 
-const resultDisplay = document.getElementById("result");
 const effacerBtn = document.getElementById("effacer");
 const parametre = document.getElementById("parametre");
 const rechercheType = document.getElementById("recherche");
 const submitBtn = document.getElementById("submit");
-const titre = document.getElementById("titre");
 const sombre = document.getElementById("sombre");
 const choixGenres = document.getElementById("choixGenres");
 const textInput = document.getElementById("textInput");
 const section = document.getElementById("section");
+const genreClass = document.getElementsByClassName("genre");
 
 
-
-
-let cpt = 0;
-
-let JSONTrie;
-sessionStorage["couleur"] = "clair";
 
 choixGenres.style.display = "none";
 
-function selectionGenre(){
-    const listGenres = getGenres();
+let JSONTrie;
+let listGenresSelection;
+sessionStorage["couleur"] = "clair";
+
+async function selectionGenre(){
+    choixGenres.innerHTML = "";
+    const listGenres = await getGenres();
     let article = document.createElement("article");
-    let titre = document.createElement("h2"); 
+    let titre = document.createElement("h3");
     titre.textContent = "Choix des genres : ";
     article.appendChild(titre);
-    listGenres.forEach (g => {
+    for (let i = 0; i < listGenres.length; i++){
         let input = document.createElement("input");
         input.type = "Checkbox";
         input.className = "genre";
-        input.value = g;
-        input.name = g;
+        input.value = listGenres[i]["_id"];
+        input.name = listGenres[i]["_id"];
         let label = document.createElement("label");
-        label.textContent = g;
+        label.textContent = listGenres[i]["_id"];
         article.appendChild(input);
         article.appendChild(label);
-    })
+    }
     choixGenres.appendChild(article);
 }
 
@@ -48,6 +46,7 @@ rechercheType.addEventListener('change', () => {
 
 function changerAffichage(){
     if (rechercheType.value == "genres"){
+        selectionGenre();
         choixGenres.style.display = "block";
         textInput.style.display = "none";
     }
@@ -117,7 +116,6 @@ document.addEventListener('keydown', function(event) {
         if (rechercheType.value == "identifiant") afficherID();
         if (rechercheType.value == "classement") afficherClassement();
         if (rechercheType.value == "genres") afficherGenre();
-        
     }
 });
 
@@ -129,16 +127,26 @@ effacerBtn.addEventListener("click", (event) => {
 });
 
 submitBtn.addEventListener("click", () => {
-    if (parametre.value == ""){
+    if (parametre.value == "" && rechercheType.value == "nom" || rechercheType.value == "identifiant" || rechercheType.value == "classement"){
         afficherErreur();
     }
     else {
         if (rechercheType.value == "nom") afficherNom();
         if (rechercheType.value == "identifiant") afficherID();
         if (rechercheType.value == "classement") afficherClassement();
-        if (rechercheType.value == "genres") afficherGenre();
+        if (rechercheType.value == "genres") {
+            console.log(genreClass);
+            Array.choixGenres.forEach()
+            for (let i = 0; genreClass.length; i++){
+                if (genreClass[i].checked){
+                    listGenresSelection += genreClass[i];
+                }
+            }
+            console.log(listGenresSelection);
+            afficherGenre();
+    
+        }
     }
-
 });
 
 const forms = document.querySelectorAll(".form-container");
@@ -223,7 +231,6 @@ async function afficherGenre() {
     JSONTrie = await getJSON();
     afficheAnime();
 }
-
 
 
 setAPI();
