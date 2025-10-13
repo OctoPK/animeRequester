@@ -57,6 +57,7 @@ function changerAffichage(){
 }
 
 function afficheAnime (){
+
     section.innerHTML = "";
 
     let anime = [];
@@ -78,7 +79,6 @@ function afficheAnime (){
         let genre = document.createElement("p");
         let classement = document.createElement("p");
         let nb_episodes = document.createElement("p");
-        
         article.classList.add("anime");
 
         nom.textContent = anime[i]["title"];
@@ -94,9 +94,7 @@ function afficheAnime (){
         article.appendChild(genre);
         article.appendChild(classement);
         article.appendChild(nb_episodes);
-    
         section.appendChild(article);
-    
     
     }
 }

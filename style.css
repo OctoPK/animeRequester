@@ -1,57 +1,124 @@
 /*reset le css*/
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /*prend toute la page*/
-  html, body {
-    height: 100%;
-  }
+html, body {
+  height: 100%;
+}
 
 /*structure du corps du site*/
-  body {
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+}
 
- header {
-    align-items: center;
-    text-align: center;
-    margin-bottom: 5%;
- }
+header {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 5%;
+}
 
 /*contenue principal du site*/
-  main {
-    flex: 1; /* Prend tout l'espace disponible */
-    margin-left: 15%;
-  }
+main {
+  flex: 1; /* Prend tout l'espace disponible */
+  margin-left: 2%;
+  margin-right: 2%;
+}
 
 /*bas du site*/
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-  }
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
 
-  .form-container {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-left: 18%;
-    padding: 20px;
-    width: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+.choixGenre {
+  display:grid;
+ grid-template-columns: max-content max-content max-content;
+}
 
-  .form-container input {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 75%;
+.choixGenre input[type="radio"] {
+  margin: 0 10px;
+  column-fill: auto;
+}
 
+.choixGenre input {
+  width: 1%;
+}
+
+.form-container {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 20px;
+  width: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 75%;
+
+}
+
+.anime-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, max-content));
+  gap: 2%;
+  margin-top: 20px;
+  margin-bottom: 10%;
+}
+
+.anime {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-rows: max-content 200px 1fr;
+  grid-gap: 20px;
+  background-color: white;
+  max-height: fit-content;
+  padding: 5%;
+}
+
+.anime img {
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+}
+
+
+.anime p {
+  flex: 1;
+  text-align: justify;
+}
+
+
+.anime h2 {
+  
+  text-align: center;
+  align-self: center; 
+  justify-self: center; 
+  margin: 0;
+  font-weight: bold;;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .anime-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80%, max-content));
+    gap: 50px;
+    margin-top: 20px;
   }
 
   .anime {
@@ -62,59 +129,45 @@
     grid-template-rows: max-content 200px 1fr;
     grid-gap: 20px;
     background-color: white;
-    max-width: 85%;
-    overflow: hidden;
+    overflow: scroll;
     padding: 5%;
-    
   }
 
-  .anime img {
-    object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-  }
-
-
-  .anime-details {
+  .anime p {
     flex: 1;
+    text-align: justify;
+    max-height: 200px;
+    overflow: auto;
   }
+}
 
 
-  .anime h2 {
-    
-    text-align: center;
-    align-self: center; 
-    justify-self: center; 
-    margin: 0;
-    font-weight: bold;;
-    margin-bottom: 5px;
-  }
 
-  #submit, #effacer {
-    background-color: blue;
-    color: white;
-  }
+#submit, #effacer {
+  background-color: blue;
+  color: white;
+}
 
-  #submit {
-    margin-left: 35%;
-  }
+#submit {
+  margin-left: 35%;
+}
 
-  #effacer {
-    margin-left: 10%;
-  }
+#effacer {
+  margin-left: 10%;
+}
 
-  #sombre{
-    background-color: black;
-    color: white;
-    margin-top: 10px;
-  }
+#sombre{
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+}
 
-  button {
-    width: 100px;
-    height: 30px;
-  }
+button {
+  width: 100px;
+  height: 30px;
+}
 
-  section{
-    text-align: center;
-  }
+section{
+  text-align: center;
+}
 
