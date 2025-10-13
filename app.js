@@ -13,12 +13,33 @@ const section = document.getElementById("section");
 
 
 
+
 let cpt = 0;
 
 let JSONTrie;
 sessionStorage["couleur"] = "clair";
 
 choixGenres.style.display = "none";
+
+function selectionGenre(){
+    const listGenres = getGenres();
+    let article = document.createElement("article");
+    let titre = document.createElement("h2"); 
+    titre.textContent = "Choix des genres : ";
+    article.appendChild(titre);
+    listGenres.forEach (g => {
+        let input = document.createElement("input");
+        input.type = "Checkbox";
+        input.className = "genre";
+        input.value = g;
+        input.name = g;
+        let label = document.createElement("label");
+        label.textContent = g;
+        article.appendChild(input);
+        article.appendChild(label);
+    })
+    choixGenres.appendChild(article);
+}
 
 
 rechercheType.addEventListener('change', () => {
@@ -184,7 +205,6 @@ async function afficherID() {
     else{
         afficheAnime();
     }
-    
 }
 
 async function afficherClassement() {
