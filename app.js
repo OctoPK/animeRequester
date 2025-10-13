@@ -20,14 +20,12 @@ function afficheAnime (){
 
     let anime = [];
 
-    if (typeof JSONTrie === "object"){
+    if (rechercheType.value == "nom"){
+        anime = JSONTrie["data"];
+    }
+    if (rechercheType.value == "identifiant" || rechercheType.value == "classement"){
         anime = [JSONTrie]
     }
-    else {
-        let anime = JSONTrie["data"];
-    }
-
-    
 
     let taille = anime.length;
     
