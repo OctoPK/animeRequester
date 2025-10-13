@@ -29,6 +29,10 @@ export function setAPI() {
     options.headers["x-rapidapi-key"] = APIKey;
 }
 
+/**
+ *
+ * @returns -1 si erreur sinon le resultat en JSON de la requête
+ */
 export async function getJSON() {
     try {
         let Surl = url.join("");
@@ -38,6 +42,7 @@ export async function getJSON() {
         return result;
     } catch (error) {
         console.log("Erreur");
+        return -1;
     }
 }
 
