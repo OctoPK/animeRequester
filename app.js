@@ -9,6 +9,7 @@ const titre = document.getElementById("titre");
 const sombre = document.getElementById("sombre");
 const section = document.getElementById("section");
 
+
 let cpt = 0;
 
 let JSONFile;
@@ -61,6 +62,15 @@ function afficheAnime (){
 }
 
 
+document.addEventListener('keydown', function(event) {
+    if(event.key  === 'Enter'){
+        event.preventDefault();
+        if (rechercheType.value == "nom") afficherNom();
+        if (rechercheType.value == "identifiant") afficherID();
+        if (rechercheType.value == "classement") afficherClassement();
+        
+    }
+});
 
 effacerBtn.addEventListener("click", (event) => {
 	event.preventDefault();
