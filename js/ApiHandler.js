@@ -1,6 +1,6 @@
 let APIKey = null;
 let APIHost = "anime-db.p.rapidapi.com";
-const url = [
+let url = [
     "https://anime-db.p.rapidapi.com/anime?",
     "page=1",
     "&",
