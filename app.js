@@ -8,20 +8,33 @@ const submitBtn = document.getElementById("submit");
 const titre = document.getElementById("titre");
 const sombre = document.getElementById("sombre");
 const choixGenres = document.getElementById("choixGenres");
+const textInput = document.getElementById("textInput");
 const section = document.getElementById("section");
-const checkbox = document.getElementsByTagName("checkbox");
+
 
 
 let cpt = 0;
 
-let JSONFile;
 let JSONTrie;
 sessionStorage["couleur"] = "clair";
 
 choixGenres.style.display = "none";
 
 
+rechercheType.addEventListener('change', () => {
+    changerAffichage();
+})
 
+function changerAffichage(){
+    if (rechercheType.value == "genres"){
+        choixGenres.style.display = "block";
+        textInput.style.display = "none";
+    }
+    if (rechercheType.value == "nom" || rechercheType.value == "identifiant" || rechercheType.value == "classement" ) {
+        choixGenres.style.display = "none";
+        textInput.style.display = "block";
+    }
+}
 
 function afficheAnime (){
     section.innerHTML = "";
@@ -68,6 +81,15 @@ function afficheAnime (){
     }
 }
 
+function afficherErreur(){
+    section.innerHTML = "";
+    let article = document.createElement("article");
+    let nom = document.createElement("h2");
+    nom.textContent = "Aucun résulat trouvé!";
+    article.appendChild(nom);
+    section.appendChild(article);
+}
+
 
 document.addEventListener('keydown', function(event) {
     if(event.key  === 'Enter'){
@@ -75,6 +97,7 @@ document.addEventListener('keydown', function(event) {
         if (rechercheType.value == "nom") afficherNom();
         if (rechercheType.value == "identifiant") afficherID();
         if (rechercheType.value == "classement") afficherClassement();
+        if (rechercheType.value == "genres") afficherGenre();
         
     }
 });
@@ -82,13 +105,21 @@ document.addEventListener('keydown', function(event) {
 effacerBtn.addEventListener("click", (event) => {
 	event.preventDefault();
     parametre.value = "";
+    rechercheType.value = "nom";
+    changerAffichage();
 });
 
 submitBtn.addEventListener("click", () => {
-    if (rechercheType.value == "nom") afficherNom();
-    if (rechercheType.value == "identifiant") afficherID();
-    if (rechercheType.value == "classement") afficherClassement();
-    if (rechercheType.value == "genres") afficherGenre();
+    if (parametre.value == ""){
+        afficherErreur();
+    }
+    else {
+        if (rechercheType.value == "nom") afficherNom();
+        if (rechercheType.value == "identifiant") afficherID();
+        if (rechercheType.value == "classement") afficherClassement();
+        if (rechercheType.value == "genres") afficherGenre();
+    }
+
 });
 
 const forms = document.querySelectorAll(".form-container");
@@ -134,21 +165,38 @@ async function afficherNom() {
     changerURL("name", parametre.value);
     changerURL("size", "10");
     JSONTrie = await getJSON();
-    afficheAnime();
+    if (JSONTrie["data"].length == 0){
+        afficherErreur();
+    }
+    else{
+        afficheAnime();
+    }
+    
 }
 
 async function afficherID() {
     resetURL();
     changerURL("id", parametre.value);
     JSONTrie = await getJSON();
-    afficheAnime();
+    if (JSONTrie == -1){
+        afficherErreur();
+    }
+    else{
+        afficheAnime();
+    }
+    
 }
 
 async function afficherClassement() {
     resetURL();
     changerURL("ranking", parametre.value);
     JSONTrie = await getJSON();
-    afficheAnime();
+    if (JSONTrie == -1){
+        afficherErreur();
+    }
+    else{
+        afficheAnime();
+    }
 }
 
 async function afficherGenre() {
