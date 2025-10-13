@@ -124,3 +124,22 @@ export function changerURL(type, param) {
             break;
     }
 }
+
+export function resetURL() {
+    url = [
+        "https://anime-db.p.rapidapi.com/anime?",
+        "page=1",
+        "&",
+        "size=10",
+        "&",
+        "search=",
+        "&",
+        "genres=",
+        "&",
+        "sortBy=ranking",
+        "&",
+        "sortOrder=asc",
+        "&",
+        "types=",
+    ];
+}
