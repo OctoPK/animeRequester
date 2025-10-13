@@ -8,8 +8,9 @@ const submitBtn = document.getElementById("submit");
 const titre = document.getElementById("titre");
 const sombre = document.getElementById("sombre");
 const choixGenres = document.getElementById("choixGenres");
+const textInput = document.getElementById("textInput");
 const section = document.getElementById("section");
-const checkbox = document.getElementsByTagName("checkbox");
+
 
 let cpt = 0;
 
@@ -19,6 +20,18 @@ sessionStorage["couleur"] = "clair";
 
 choixGenres.style.display = "none";
 
+
+rechercheType.addEventListener('change', () => {
+    if (rechercheType.value == "genres"){
+        choixGenres.style.display = "block";
+        textInput.style.display = "none";
+    }
+    if (rechercheType.value == "nom" || rechercheType.value == "identifiant" || rechercheType.value == "classement" ) {
+        choixGenres.style.display = "none";
+        textInput.style.display = "block";
+    }
+        
+})
 
 
 
