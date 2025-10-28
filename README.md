@@ -24,7 +24,7 @@ Enter your animeDB API key in the pop-up window.
 Create an account on rapidAPI (or log in if you already have an account): <https://rapidapi.com/auth/sign-up>
 
 Once you have created your account, search for anime db in the search bar and select the first result, as shown in the image:<br>
-![[./img/img_animeDB_readme.png]]<br>
+![alt text](img/img_animeDB_readme.png)<br>
 Go to ‘API Overview’ and select the free version. <br>
 Once you have completed all these steps, you will be able to obtain your API key in the ‘X-RapidAPI-Key’ cell.
 
