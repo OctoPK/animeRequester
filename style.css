@@ -20,7 +20,17 @@ body {
 header {
   align-items: center;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-family: 'Arial', sans-serif;
+  color: #2c3e50;
+  font-size: 2.5em;
+  margin-bottom: 15px;
 }
 
 /*contenue principal du site*/
@@ -30,6 +40,8 @@ main {
   margin-right: 2%;
 }
 
+
+
 /*bas du site*/
 footer {
   background-color: #333;
@@ -38,19 +50,7 @@ footer {
   padding: 10px 0;
 }
 
-.choixGenre {
-  display:grid;
- grid-template-columns: max-content max-content max-content;
-}
 
-.choixGenre input[type="radio"] {
-  margin: 0 10px;
-  column-fill: auto;
-}
-
-.choixGenre input {
-  width: 1%;
-}
 
 .form-container {
   background-color: white;
@@ -61,6 +61,7 @@ footer {
   padding: 20px;
   width: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .form-container input {
@@ -69,6 +70,42 @@ footer {
   width: 75%;
 
 }
+
+.choixGenres {
+  display: block;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.choixGenres article {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.choixGenres article h3 {
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+}
+
+.genre-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.genre-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.genre-item label {
+  cursor: pointer;
+  user-select: none;
+}
+
+
 
 .anime-container {
   display: grid;
@@ -79,15 +116,21 @@ footer {
 }
 
 .anime {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-rows: max-content 200px 1fr;
   grid-gap: 20px;
   background-color: white;
   max-height: fit-content;
   padding: 5%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.anime:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .anime img {
@@ -113,7 +156,7 @@ footer {
   margin-bottom: 5px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .anime-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80%, max-content));
@@ -144,27 +187,64 @@ footer {
 
 
 #submit, #effacer {
-  background-color: blue;
+  background-color: #4a90e2;
   color: white;
-}
-
-#submit {
-  margin-left: 35%;
-}
-
-#effacer {
-  margin-left: 10%;
-}
-
-#sombre{
-  background-color: black;
-  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: auto;
+  min-width: 120px;
   margin-top: 10px;
 }
 
+#submit:hover, #effacer:hover {
+  background-color: #357abd;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #submit, #effacer {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+#sombre {
+  background-color: #2c3e50;
+  color: white;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#sombre:hover {
+  background-color: #1a252f;
+}
+
 button {
-  width: 100px;
-  height: 30px;
+  width: auto;
+  min-width: 100px;
+  height: 35px;
+  font-size: 14px;
 }
 
 section{

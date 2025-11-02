@@ -25,17 +25,26 @@ async function selectionGenre(){
     let titre = document.createElement("h3");
     titre.textContent = "Choix des genres : ";
     article.appendChild(titre);
-    for (let i = 0; i < listGenres.length; i++){
+       for (let i = 0; i < listGenres.length; i++){
+        let container = document.createElement("div");
+        container.className = "genre-item";
+        
         let input = document.createElement("input");
-        input.type = "Checkbox";
+        input.type = "checkbox";
         input.className = "genre";
         input.value = listGenres[i]["_id"];
         input.name = listGenres[i]["_id"];
+        input.id = "genre-" + i;
+        
         let label = document.createElement("label");
         label.textContent = listGenres[i]["_id"];
-        article.appendChild(input);
-        article.appendChild(label);
+        label.htmlFor = "genre-" + i;
+        
+        container.appendChild(input);
+        container.appendChild(label);
+        article.appendChild(container);
     }
+
     choixGenres.appendChild(article);
 }
 
