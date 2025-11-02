@@ -77,13 +77,13 @@ footer {
   margin: 20px 0;
 }
 
-.choixGenres article {
+.choixGenres genre-selection {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
 }
 
-.choixGenres article h3 {
+.choixGenres genre-slection h3 {
   grid-column: 1 / -1;
   margin-bottom: 10px;
 }
@@ -92,6 +92,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: 5px;
 }
 
 .genre-item input[type="checkbox"] {

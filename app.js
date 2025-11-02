@@ -24,6 +24,7 @@ async function selectionGenre(){
     let article = document.createElement("article");
     let titre = document.createElement("h3");
     titre.textContent = "Choix des genres : ";
+    article.className = "genre-selection";
     article.appendChild(titre);
        for (let i = 0; i < listGenres.length; i++){
         let container = document.createElement("div");
@@ -166,12 +167,15 @@ const forms = document.querySelectorAll(".form-container");
 
 sombre.addEventListener("click", () => {
     let articles = document.querySelectorAll("article");
+    let header = document.querySelector("header");
     if (sessionStorage["couleur"] == "clair") {
         document.body.style.backgroundColor = "DarkGrey";
         document.body.style.color = "White";
         sombre.textContent = "Mode clair";
         sombre.style.backgroundColor = "White";
         sombre.style.color = "Black";
+        header.style.backgroundColor = "Grey";
+        header.style.color = "white";
 		forms.forEach((form) => {
 			form.style.backgroundColor = "lightblue"; // Remplacez "lightblue" par la couleur souhaitée
 			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.5)"); // Ajoute une ombre légère pour un effet de profondeur
@@ -188,6 +192,8 @@ sombre.addEventListener("click", () => {
         sombre.textContent = "Mode sombre";
         sombre.style.backgroundColor = "Black";
         sombre.style.color = "White";
+        header.style.backgroundColor = "white";
+        header.style.color = "black";
 		forms.forEach((form) => {
 			form.style.backgroundColor = "White";
 			form.style.boxShadow = ("0 4px 8px rgba(0, 0, 0, 0.2)");
